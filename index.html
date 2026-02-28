@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>only images · gallery</title>
+  <style>
+    /* reset & minimal base — keeps focus on images */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1b1b1f;      /* deep neutral background, images pop */
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* main acting gallery: only images, no extra fluff */
+    .image-grid {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      justify-content: center;
+      align-items: start;
+    }
+
+    /* every item is ONLY the image – no titles, no captions, no buttons */
+    .image-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;   /* no cards, no frames */
+      border-radius: 0;          /* sharp edges, pure photography */
+      overflow: hidden;
+      transition: transform 0.2s ease, opacity 0.2s;
+    }
+
+    /* subtle scale on hover – but still only the image speaks */
+    .image-item:hover {
+      transform: scale(1.02);      /* gentle zoom, keeps image pure */
+    }
+
+    /* all images: fully responsive, natural proportions */
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: cover;          /* covers grid cell without distortion */
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      border-radius: 4px;          /* very subtle rounding, optional */
+      transition: box-shadow 0.25s;
+    }
+
+    /* image-only simplicity: even box-shadow softens on hover */
+    .image-item:hover img {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    /* --- purely decorative minimal header (still no text over images) ---
+       just a quiet line to say "only images", but it's separate from gallery */
+    .quiet-mast {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      width: 100%;
+      color: #c0c4cf;
+      font-weight: 350;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid #33363f;
+      padding-bottom: 0.9rem;
+      max-width: 780px;
+    }
+
+    /* small screen fine-tune */
+    @media (max-width: 580px) {
+      .image-grid {
+        gap: 1rem;
+      }
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+    }
+
+    /* optional: remove any default link underline if images were wrapped,
+       but we don't use <a> anywhere — only img inside figure-ish div */
+    a, a:visited {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* keep <figure> and any potential default margins zero */
+    figure, .image-item {
+      margin: 0;
+    }
+
+    /* subtle fallback for broken images (still image-only) */
+    img::after {
+      content: "📷";
+      display: block;
+      color: #aaa;
+      background: #2a2a30;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- minimalist label: not part of the image grid, just context -->
+  <div class="quiet-mast">only images · curated silence</div>
+
+  <!-- GALLERY: contains nothing but image elements (and alt for accessibility) -->
+  <div class="image-grid">
+
+    <!-- each image-item is a pure container for ONE image -->
+    <div class="image-item">
+      <img src="logo.jpeg" alt="techgeo kenya logo" loading="logo">
+    </div>
+
+    <div class="image-item">
+      <img src="loin.png" alt="face in nature" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="withdraw.png" alt="flowers macro" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/20/640/480" alt="desk and notebook" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/26/640/480" alt="travel road" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/30/640/480" alt="coffee and cup" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/45/640/480" alt="water and waves" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/52/640/480" alt="old barn" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/65/640/480" alt="beach chair" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/84/640/480" alt="blue car" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/91/640/480" alt="pet cat" loading="lazy">
+    </div>
+
+    <div class="image-item">
+      <img src="https://picsum.photos/id/104/640/480" alt="reflection pond" loading="lazy">
+    </div>
+
+    <!-- everything is image – even these placeholder photos are royalty-free from picsum -->
+    <!-- to use your own images: replace src="path/your-image.jpg" and keep alt text -->
+  </div>
+
+  <!-- no footer, no text overlay, just pure image experience.
+       the only words are alt attributes (invisible) and the minimal top line -->
+</body>
+</html>
